@@ -9,7 +9,6 @@ class CustomUser(AbstractUser):
     desiredSalary = models.IntegerField()
     grade = models.CharField(max_length=100)
     exp = models.IntegerField()
-    profilePhoto = models.CharField(max_length=100)
     technologies = models.JSONField()
 
     USERNAME_FIELD = 'email'
