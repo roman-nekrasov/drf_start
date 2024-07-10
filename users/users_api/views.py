@@ -6,7 +6,7 @@ from .serializers import SignUpSerializer, SignInSerializer, UserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-class RegisterView(generics.CreateAPIView):
+class SignUpView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
     serializer_class = SignUpSerializer
     permission_classes = [AllowAny]
@@ -19,7 +19,7 @@ class RegisterView(generics.CreateAPIView):
         return Response({'token': token}, status=status.HTTP_201_CREATED)
 
 
-class LoginView(generics.GenericAPIView):
+class SignInView(generics.GenericAPIView):
     serializer_class = SignInSerializer
     permission_classes = [AllowAny]
 
