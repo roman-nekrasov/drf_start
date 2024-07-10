@@ -17,6 +17,11 @@ class SignUpSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ['email', 'password', 'name', 'country', 'desiredSalary', 'grade', 'exp', 'technologies']
 
+    def validate_email(self, value):
+        if CustomUser.objects.filter(email=value).exists():
+            raise serializers.ValidationError({"message": "User with this email already exists4."})
+        return value
+
     def create(self, validated_data):
         user = CustomUser.objects.create_user(
             email=validated_data['email'],
